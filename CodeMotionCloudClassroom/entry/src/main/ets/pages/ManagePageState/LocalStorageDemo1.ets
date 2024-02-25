@@ -31,6 +31,7 @@ struct Chid2 {
   @LocalStorageProp('Person')
   person2: Person = {} //全局状态会覆盖初始值
 
+
   build() {
     Text(`子组件同步LocalStorage中的Person值：${this.person2.name}-${this.person2.age}`)
   }
