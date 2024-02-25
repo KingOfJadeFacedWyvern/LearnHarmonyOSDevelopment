@@ -3,6 +3,7 @@
     "pages/Index",
     "pages/GridColTest",
     "pages/GridRowExamples",
-    "pages/BuilderParamTest"
+    "pages/BuilderParamTest",
+    "pages/ManagePageState/LocalStorageDemo"
   ]
 }
