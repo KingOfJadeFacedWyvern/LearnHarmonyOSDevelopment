@@ -11,11 +11,19 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
   }
 
+
+  //  创建LocalStorage状态
+  UIStorage = new LocalStorage({ // 初始化LocalStorage全局的页面存储
+    Person: {
+      name: '小小', age: 24
+    }
+  })
+
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
-    windowStage.loadContent('pages/Index', (err, data) => {
+    windowStage.loadContent('pages/ManagePageState/Page1', this.UIStorage, (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
