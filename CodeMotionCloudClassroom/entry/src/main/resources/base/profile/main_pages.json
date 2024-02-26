@@ -6,6 +6,7 @@
     "pages/BuilderParamTest",
     "pages/ManagePageState/LocalStorageDemo",
     "pages/ManagePageState/Page1",
-    "pages/ManagePageState/Page2"
+    "pages/ManagePageState/Page2",
+    "pages/ManagePageState/AppStorageDemo"
   ]
 }
