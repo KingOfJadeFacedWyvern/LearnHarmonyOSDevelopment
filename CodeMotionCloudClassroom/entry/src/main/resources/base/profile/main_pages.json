@@ -4,6 +4,8 @@
     "pages/GridColTest",
     "pages/GridRowExamples",
     "pages/BuilderParamTest",
-    "pages/ManagePageState/LocalStorageDemo"
+    "pages/ManagePageState/LocalStorageDemo",
+    "pages/ManagePageState/Page1",
+    "pages/ManagePageState/Page2"
   ]
 }
