@@ -1,4 +1,6 @@
 import { Person } from './LocalStorageDemo1'
+import promptAction from '@ohos.promptAction'
+import List from '@ohos.util.List'
 /*
 AppStorage是应用全局的UI状态存储，是和应用的进程绑定的，由UI框架在应用程序启动时创建，为应用程序UI状态属性提供中央存储。
 和LocalStorage不同的是，LocalStorage是页面级的，通常应用于页面内的数据共享，而AppStorage是应用级的全局状态共享，还相当于整个应用的“中枢”。
@@ -20,6 +22,8 @@ struct AppStorageDemo {
         })
       Divider()
       comA()
+      Divider()
+      ComB()
     }
     .width('100%')
     .height('100%')
@@ -41,5 +45,38 @@ struct comA {
         })
     }
 
+  }
+}
+
+@Component
+struct ComB {
+  build() {
+    Column({ space: 5 }) {
+      Button(`获取AppStorage中的值`)
+        .onClick(() => {
+          const person: Person = AppStorage.Get<Person>(`person`)
+          promptAction.showToast({ message: person.name + '-' + person.age })
+        })
+      // 通过API方式来操作AppStorage UI级别状态值
+      Button(`设置AppStorage中的值`)
+        .onClick(() => {
+          AppStorage.Set<Person>(`person`, { name: '大大', age: 20 })
+
+        })
+      // 通过API方式来操作AppStorage UI级别状态值
+      Button(`link方式获取 / 设置值`)
+        .onClick(() => {
+          // 另一种获取值方法
+          const Link: SubscribedAbstractProperty<Person> = AppStorage.Link('person')
+          // 设置值
+          Link.set({
+            name: Link.get().name,
+            age: Link.get().age += 1
+          })
+          promptAction.showToast({ message: Link.get().name + '-' + Link.get().age })
+
+
+        })
+    }
   }
 }
