@@ -57,12 +57,14 @@ struct ComB {
           const person: Person = AppStorage.Get<Person>(`person`)
           promptAction.showToast({ message: person.name + '-' + person.age })
         })
+      Divider()
       // 通过API方式来操作AppStorage UI级别状态值
       Button(`设置AppStorage中的值`)
         .onClick(() => {
           AppStorage.Set<Person>(`person`, { name: '大大', age: 20 })
 
         })
+      Divider()
       // 通过API方式来操作AppStorage UI级别状态值
       Button(`link方式获取 / 设置值`)
         .onClick(() => {
