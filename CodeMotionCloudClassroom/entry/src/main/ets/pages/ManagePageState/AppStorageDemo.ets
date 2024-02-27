@@ -63,7 +63,6 @@ struct ComB {
           AppStorage.Set<Person>(`person`, { name: '大大', age: 20 })
 
         })
-      //
       // 通过API方式来操作AppStorage UI级别状态值
       Button(`link方式获取 / 设置值`)
         .onClick(() => {
