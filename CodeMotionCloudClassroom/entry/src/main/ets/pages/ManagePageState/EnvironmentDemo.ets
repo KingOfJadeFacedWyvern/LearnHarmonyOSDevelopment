@@ -4,15 +4,13 @@ import i18n from '@ohos.i18n';
 const systemLanguage = i18n.getSystemLanguage()
 
 // 通过Environment来存入变量
-
 Environment.EnvProp('Language', systemLanguage)
 
 
 @Entry
 @Component
 struct EnvironmentDemo {
-  @StorageLink('Language') language: string=''
-
+  @StorageLink('Language') language: string = ''
   @State message: string = 'Hello World'
 
   build() {
