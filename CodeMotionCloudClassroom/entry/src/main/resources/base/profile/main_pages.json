@@ -8,6 +8,7 @@
     "pages/ManagePageState/Page1",
     "pages/ManagePageState/Page2",
     "pages/ManagePageState/AppStorageDemo",
-    "pages/ManagePageState/PersistentStorageDemo"
+    "pages/ManagePageState/PersistentStorageDemo",
+    "pages/ManagePageState/EnvironmentDemo"
   ]
 }
