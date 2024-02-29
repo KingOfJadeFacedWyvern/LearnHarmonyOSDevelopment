@@ -9,6 +9,8 @@
     "pages/ManagePageState/Page2",
     "pages/ManagePageState/AppStorageDemo",
     "pages/ManagePageState/PersistentStorageDemo",
-    "pages/ManagePageState/EnvironmentDemo"
+    "pages/ManagePageState/EnvironmentDemo",
+    "pages/ManagePageState/HttpTest",
+    "pages/Project/Hungry/Hungry"
   ]
 }
