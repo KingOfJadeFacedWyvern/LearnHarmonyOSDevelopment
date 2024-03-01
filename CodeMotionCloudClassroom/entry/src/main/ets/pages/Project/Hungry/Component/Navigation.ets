@@ -1,5 +1,3 @@
-import colorSpaceManager from '@ohos.graphics.colorSpaceManager'
-
 @Component
 export struct Navigation1 {
   @Builder NavigatorItem(isSelectes: boolean, title: string, subTitle?: string) {
