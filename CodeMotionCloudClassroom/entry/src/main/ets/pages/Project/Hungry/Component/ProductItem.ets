@@ -1,5 +1,9 @@
+import { ProductInfo } from '../Common/Entities'
+
 @Component
 export struct ProductItem {
+  ProductInfo: ProductInfo
+
   build() {
     Row() {
       Image($r('app.media.product1'))
@@ -7,12 +11,12 @@ export struct ProductItem {
         .aspectRatio(1)
         .borderRadius(11)
       Column({ space: 2 }) {
-        Text('香辣鸡腿堡.')
+        Text(this.ProductInfo.name)
           .fontSize(20)
           .maxLines(1) // 显示一行
           .textOverflow({ overflow: TextOverflow.Ellipsis })
           .fontWeight(FontWeight.Bold)
-        Text('本店销售第1名')
+        Text(this.ProductInfo.tag)
           .fontSize(12)
           .maxLines(1) // 显示一行
           .textOverflow({ overflow: TextOverflow.Ellipsis })
@@ -20,15 +24,15 @@ export struct ProductItem {
           .backgroundColor('#FFF4E6')
           .padding({ left: 5, top: 2, right: 5, bottom: 2 })
           .borderRadius(2)
-        Text('好吃懒做好吃懒做好吃懒做好吃懒做好吃懒做')
+        Text(this.ProductInfo.desc)
           .maxLines(1) // 显示一行
           .textOverflow({ overflow: TextOverflow.Ellipsis })
           .fontSize(15)
           .fontColor('#A1A1A1')
         Text() {
-          Span('朋售1000+')
+          Span(`朋售 ${this.ProductInfo.month_sale}`)
           Span(' ')
-          Span('好评率100%+')
+          Span(`好评率${this.ProductInfo.like_rate}`)
         }
         .fontSize(12)
         .fontColor('#A1A1A1')
@@ -38,7 +42,7 @@ export struct ProductItem {
             Span('$ ')
               .fontSize(10)
               .fontColor('#FD4A37')
-            Span('9.99')
+            Span(`${this.ProductInfo.price}`)
               .fontSize(15)
               .fontColor('#FD4A37')
           }

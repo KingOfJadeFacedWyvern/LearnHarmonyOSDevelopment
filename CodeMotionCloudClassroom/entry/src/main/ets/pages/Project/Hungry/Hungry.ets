@@ -2,11 +2,26 @@ import { Cart } from './Component/Catr'
 import { Footer } from './Component/Footer'
 import { Navigation1 } from './Component/Navigation'
 import { ProductsMenu } from './Component/ProductsMenu'
+import http from '@ohos.net.http'
+import { Categroy } from './Common/Entities'
+// 创建 HTTP Request对象
+const request = http.createHttp()
 
 @Entry
 @Component
 struct Hungry {
   @State ShowCart: boolean = false
+  @State categoryList: Categroy[] = []
+  Address: string = 'http://1a13212e.r11.cpolar.top/infos'
+
+  // 在build前执行
+  aboutToAppear() {
+    request.request(this.Address)
+      .then((ResponseType) => {
+        const categoryList = JSON.parse(ResponseType.result as string) as Categroy[]
+        this.categoryList = categoryList
+      })
+  }
 
   build() {
     // 层叠布局
@@ -17,7 +32,7 @@ struct Hungry {
         Navigation1()
 
         // 商品部分
-        ProductsMenu()
+        ProductsMenu({ categoryList: $categoryList })
       }
       .width('100%')
       .height('100%')
