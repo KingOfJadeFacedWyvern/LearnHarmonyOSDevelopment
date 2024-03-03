@@ -10,9 +10,9 @@ const request = http.createHttp()
 @Entry
 @Component
 struct Hungry {
-  @State ShowCart: boolean = false
+  @State ShowCart: boolean = true
   @State categoryList: Categroy[] = []
-  Address: string = 'http://1a13212e.r11.cpolar.top/infos'
+  Address: string = 'http://6e99a866.r15.cpolar.top/infos'
 
   // 在build前执行
   aboutToAppear() {
