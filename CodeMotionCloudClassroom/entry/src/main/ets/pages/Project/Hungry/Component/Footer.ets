@@ -45,7 +45,7 @@ export struct Footer {
         Text('去结算')
           .padding(10)
           .width(68)
-          .backgroundColor('#989898')
+          .backgroundColor(Color.Pink)
           .borderRadius(55)
           .textAlign(TextAlign.Center)
 

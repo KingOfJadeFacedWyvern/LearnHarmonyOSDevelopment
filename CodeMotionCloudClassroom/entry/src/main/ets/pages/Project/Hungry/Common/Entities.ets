@@ -16,3 +16,11 @@ export class ProductInfo{
   like_rate:string
   price:number
 }
+//购物车商品对象
+export class CartProductInfo{
+  id:number
+  picture:string
+  name:string
+  price:number
+  cnt:number
+}
