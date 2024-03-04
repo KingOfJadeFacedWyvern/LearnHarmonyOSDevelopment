@@ -1,3 +1,5 @@
+import { CartItem } from './CartItem'
+
 @Component
 export struct Cart {
   build() {
@@ -19,13 +21,39 @@ export struct Cart {
         }
         .width('90%')
         .justifyContent(FlexAlign.SpaceBetween)
-        .margin({ top: 10, bottom: 10})
-        .border({width: {bottom:0.5},color:'#FEF6E5'})
+        .margin({ top: 10, bottom: 10 })
+        .border({ width: { bottom: 0.5 }, color: '#FEF6E5' })
+
+        // 购物车商品列表
+        List() {
+          ListItem() {
+            CartItem()
+          }
+          //
+          // ListItem() {
+          //   CartItem()
+          // }
+          //
+          // ListItem() {
+          //   CartItem()
+          // }
+          //
+          // ListItem() {
+          //   CartItem()
+          // }
+          //
+          // ListItem() {
+          //   CartItem()
+          // }
+        }
+        .divider({ strokeWidth: 0.5, color: '#FEF6E5' })
+        .margin({ left: 15, right: 15 })
 
       }
       .backgroundColor(Color.White)
       .width('100%')
-      .padding({ top:75 })
+      // .height(`500VP`)
+      .padding({ bottom: 75 })
       .borderRadius({ topLeft: 16, topRight: 12 })
     }
     .width('100%')

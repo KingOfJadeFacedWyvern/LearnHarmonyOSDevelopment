@@ -12,7 +12,7 @@ const request = http.createHttp()
 struct Hungry {
   @State ShowCart: boolean = true
   @State categoryList: Categroy[] = []
-  Address: string = 'http://6e99a866.r15.cpolar.top/infos'
+  Address: string = 'https://1c3ca57b.r8.cpolar.top/infos'
 
   // 在build前执行
   aboutToAppear() {
