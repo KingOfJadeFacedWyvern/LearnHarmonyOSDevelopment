@@ -3,17 +3,23 @@ import { Footer } from './Component/Footer'
 import { Navigation1 } from './Component/Navigation'
 import { ProductsMenu } from './Component/ProductsMenu'
 import http from '@ohos.net.http'
-import { Categroy } from './Common/Entities'
+import { CartProductInfo, Categroy } from './Common/Entities'
+import { KEY } from './Common/Fun'
 // 创建 HTTP Request对象
 const request = http.createHttp()
 
 @Entry
 @Component
 struct Hungry {
-  @State ShowCart: boolean = true
-  @State categoryList: Categroy[] = []
   Address: string = 'https://1c3ca57b.r8.cpolar.top/infos'
+  @State ShowCart: boolean = false
+  @State categoryList: Categroy[] = []
+  @StorageProp(KEY) @Watch('setCartProductListInfo') cartProductListJsnoStr: string = '[]'
+  @State cartProductList: CartProductInfo[] = JSON.parse(this.cartProductListJsnoStr)
 
+  setCartProductListInfo() {
+    this.cartProductList = JSON.parse(this.cartProductListJsnoStr)
+  }
   // 在build前执行
   aboutToAppear() {
     request.request(this.Address)
@@ -42,7 +48,7 @@ struct Hungry {
       }
 
       // 结算区
-      Footer({ ShowCart: $ShowCart })
+      Footer({ ShowCart: $ShowCart, cartProductList: $cartProductList })
     }
     .width('100%')
     .height('100%')

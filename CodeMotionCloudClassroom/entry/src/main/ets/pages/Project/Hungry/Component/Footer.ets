@@ -1,6 +1,17 @@
+import { CartProductInfo } from '../Common/Entities'
+
 @Component
 export struct Footer {
   @Link ShowCart: boolean
+  @Link cartProductList: CartProductInfo[]
+  @State Count: string = this.cartProductList.reduce((totalCnt: number, item: CartProductInfo) => {
+    totalCnt += item.cnt
+    return totalCnt
+  }, 0).toString()
+  @State Count1: number = this.cartProductList.reduce((totalPrice: number, item: CartProductInfo) => {
+    totalPrice += item.cnt * item.price
+    return Number(totalPrice.toFixed(2))
+  }, 0)
 
   build() {
     Row() {
@@ -8,7 +19,7 @@ export struct Footer {
         // 左侧图标背景
         Row() {
           Badge({
-            value: '5',
+            value: this.Count,
             position: BadgePosition.RightTop,
             style: { badgeSize: 15, badgeColor: '#04B3FF' }
           }) {
@@ -19,7 +30,7 @@ export struct Footer {
         }
         .height('90%')
         .aspectRatio(1)
-        .backgroundColor('#CBCBCB')
+        .backgroundColor(this.cartProductList.length === 0 ? '#CBCBCB' : '#E70015')
         .borderRadius(25)
         .alignItems(VerticalAlign.Center)
         .justifyContent(FlexAlign.Center)
@@ -31,7 +42,14 @@ export struct Footer {
         Column() {
           Text() {
             Span('￥').fontSize(12)
-            Span('20').fontSize(24)
+            // Span(this.Count1.toString())
+            //   .fontSize(24)
+            Span(`${this.cartProductList.reduce((totalPrice: number, item: CartProductInfo) => {
+              totalPrice += item.cnt * item.price
+              return Number(totalPrice.toFixed(2))
+            }, 0)}`).fontSize(24)
+
+
           }
 
           Text('另需配送费$10')
@@ -45,7 +63,7 @@ export struct Footer {
         Text('去结算')
           .padding(10)
           .width(68)
-          .backgroundColor(Color.Pink)
+          .backgroundColor(this.cartProductList.length === 0 ? '#CBCBCB' : Color.Pink)
           .borderRadius(55)
           .textAlign(TextAlign.Center)
 

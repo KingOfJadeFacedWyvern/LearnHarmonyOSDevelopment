@@ -26,25 +26,7 @@ export struct Cart {
 
         // 购物车商品列表
         List() {
-          ListItem() {
-            CartItem()
-          }
-          //
-          // ListItem() {
-          //   CartItem()
-          // }
-          //
-          // ListItem() {
-          //   CartItem()
-          // }
-          //
-          // ListItem() {
-          //   CartItem()
-          // }
-          //
-          // ListItem() {
-          //   CartItem()
-          // }
+
         }
         .divider({ strokeWidth: 0.5, color: '#FEF6E5' })
         .margin({ left: 15, right: 15 })

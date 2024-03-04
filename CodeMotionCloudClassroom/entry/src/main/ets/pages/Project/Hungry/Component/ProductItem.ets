@@ -1,4 +1,6 @@
 import { ProductInfo } from '../Common/Entities'
+import { addToCart } from '../Common/Fun'
+import promptAction from '@ohos.promptAction'
 
 @Component
 export struct ProductItem {
@@ -50,6 +52,10 @@ export struct ProductItem {
           Image($r('app.media.icon_add'))
             .width(16)
             .aspectRatio(1)
+            .onClick(() => {
+              addToCart(this.ProductInfo)
+              promptAction.showToast({ message: 'Add ShoppingCart Success'})
+            })
 
 
         }
