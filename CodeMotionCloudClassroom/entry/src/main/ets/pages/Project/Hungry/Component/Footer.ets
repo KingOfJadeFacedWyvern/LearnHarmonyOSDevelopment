@@ -1,17 +1,19 @@
 import { CartProductInfo } from '../Common/Entities'
+import promptAction from '@ohos.promptAction'
 
 @Component
 export struct Footer {
   @Link ShowCart: boolean
   @Link cartProductList: CartProductInfo[]
-  @State Count: string = this.cartProductList.reduce((totalCnt: number, item: CartProductInfo) => {
-    totalCnt += item.cnt
-    return totalCnt
-  }, 0).toString()
-  @State Count1: number = this.cartProductList.reduce((totalPrice: number, item: CartProductInfo) => {
-    totalPrice += item.cnt * item.price
-    return Number(totalPrice.toFixed(2))
-  }, 0)
+  // @State Count: string = this.cartProductList.reduce((totalCnt: number, item: CartProductInfo) => {
+  //   promptAction.showToast({ "message": totalCnt.toString() })
+  //   totalCnt += item.cnt
+  //   return totalCnt
+  // }, 0).toString()
+  // @State Count1: number = this.cartProductList.reduce((totalPrice: number, item: CartProductInfo) => {
+  //   totalPrice += item.cnt * item.price
+  //   return Number(totalPrice.toFixed(2))
+  // }, 0)
 
   build() {
     Row() {
@@ -19,7 +21,10 @@ export struct Footer {
         // 左侧图标背景
         Row() {
           Badge({
-            value: this.Count,
+            value: this.cartProductList.reduce((totalCnt: number, item: CartProductInfo) => {
+              totalCnt += item.cnt
+              return totalCnt
+            }, 0).toString(),
             position: BadgePosition.RightTop,
             style: { badgeSize: 15, badgeColor: '#04B3FF' }
           }) {

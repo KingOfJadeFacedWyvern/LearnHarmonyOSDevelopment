@@ -7,11 +7,13 @@ import { CartProductInfo, Categroy } from './Common/Entities'
 import { KEY } from './Common/Fun'
 // 创建 HTTP Request对象
 const request = http.createHttp()
+// 将购物车商品列表持久化
+PersistentStorage.PersistProp(KEY,'[]')
 
 @Entry
 @Component
 struct Hungry {
-  Address: string = 'https://1c3ca57b.r8.cpolar.top/infos'
+  Address: string = 'https://43c49863.r27.cpolar.top/infos'
   @State ShowCart: boolean = false
   @State categoryList: Categroy[] = []
   @StorageProp(KEY) @Watch('setCartProductListInfo') cartProductListJsnoStr: string = '[]'
@@ -44,7 +46,7 @@ struct Hungry {
       .height('100%')
       // 购物车
       if (this.ShowCart) {
-        Cart()
+        Cart({ cartProductList: $cartProductList })
       }
 
       // 结算区

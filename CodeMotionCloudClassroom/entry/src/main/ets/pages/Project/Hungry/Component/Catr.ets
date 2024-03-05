@@ -1,7 +1,11 @@
+import { CartProductInfo } from '../Common/Entities'
+import { cleanCart } from '../Common/Fun'
 import { CartItem } from './CartItem'
 
 @Component
 export struct Cart {
+  @Link cartProductList: CartProductInfo[]
+
   build() {
     Column() {
       Column() {
@@ -17,6 +21,9 @@ export struct Cart {
             Text('清空')
               .fontSize(12)
               .fontColor('#A1A1A1')
+              .onClick(() => {
+                cleanCart()
+              })
           }
         }
         .width('90%')
@@ -26,7 +33,14 @@ export struct Cart {
 
         // 购物车商品列表
         List() {
-
+          ForEach(this.cartProductList, (item: CartProductInfo, index: number) => {
+            ListItem() {
+              CartItem({ cartProductInfo: item })
+            }
+          }, (item: any, index: number) => {
+            return item
+            return index
+          })
         }
         .divider({ strokeWidth: 0.5, color: '#FEF6E5' })
         .margin({ left: 15, right: 15 })

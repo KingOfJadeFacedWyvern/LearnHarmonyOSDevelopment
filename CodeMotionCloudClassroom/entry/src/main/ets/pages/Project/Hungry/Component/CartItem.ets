@@ -1,12 +1,17 @@
+import { CartProductInfo } from '../Common/Entities'
+import { addToCart, minusFromCart } from '../Common/Fun'
+
 @Component
 export struct CartItem {
+  cartProductInfo: CartProductInfo
+
   build() {
     Row() {
-      Image("https://i.postimg.cc/QFDs9gfw/product3.jpg")
+      Image(this.cartProductInfo.picture)
         .width(66)
         .aspectRatio(1)
       Column({ space: 2 }) {
-        Text('香辣鸡腿堡')
+        Text(this.cartProductInfo.name)
           .fontSize(20)
           .maxLines(1) // 显示一行
           .textOverflow({ overflow: TextOverflow.Ellipsis })
@@ -17,7 +22,7 @@ export struct CartItem {
             Span('$ ')
               .fontSize(10)
               .fontColor('#FD4A37')
-            Span(`9.9`)
+            Span(`${this.cartProductInfo.price}`)
               .fontSize(15)
               .fontColor('#FD4A37')
           }
@@ -26,11 +31,18 @@ export struct CartItem {
             Image($r('app.media.icon_minus'))
               .width(16)
               .aspectRatio(1)
-            Text(`10`)
+              .onClick(() => {
+                minusFromCart(this.cartProductInfo)
+              })
+
+            Text(`${this.cartProductInfo.cnt}`)
               .fontSize(12)
             Image($r('app.media.icon_add'))
               .width(16)
               .aspectRatio(1)
+              .onClick(() => {
+                addToCart(this.cartProductInfo)
+              })
           }
         }
         .width('90%')
