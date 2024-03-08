@@ -14,9 +14,18 @@ export class CroppingElement {
   //   被裁剪图片信息
   imageInfo: {
     size: Size_wh,
-    // componentSize: Size_wh,
+    componentSize: Size_wh,
     position: Position_xy
-  }
+  } // = {
+  //   size: {
+  //     width: 200,
+  //     height: 55
+  //   },
+  //   position: {
+  //     x: 0,
+  //     y: 0
+  //   }
+  // }
   //   裁剪区域
   clipArea: {
     size: Size_wh
@@ -35,7 +44,20 @@ export class CroppingElement {
     componentWidth: number,
     componentHeight: number
   }) {
-
+    this.imageInfo = {
+      size: {
+        width: params.width,
+        height: params.height
+      },
+      componentSize: {
+        width: params.componentWidth,
+        height: params.componentHeight
+      },
+      position: {
+        x: this.size.width / 2 - params.componentWidth / 2,
+        y: this.size.height / 2 - params.componentHeight / 2
+      }
+    }
   }
 }
 
