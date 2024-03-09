@@ -1,4 +1,6 @@
 import { CroppingElement, lengthToNumber, Size_wh } from '../Component/CroppingElement'
+import ClipTool from '../Components/ClipTool'
+
 
 @Entry
 @Component
@@ -21,12 +23,13 @@ struct Index {
               componentWidth: px2vp(event.componentWidth),
               componentHeight: px2vp(event.componentHeight)
             })
+            this.croppingElement.initClipArea()
           })
             // 绑定数据 ↑
           .objectFit(ImageFit.Fill)
           .width('100%')
           .opacity(0)
-
+        // 被裁剪。图片预览
         if (this.croppingElement.imageInfo) {
           Image($r('app.media.PinkSchoolgirl'))
             .objectFit(ImageFit.Fill)
@@ -37,10 +40,13 @@ struct Index {
               y: this.croppingElement.imageInfo.position.y
             })
         }
-
-
+        //   剪辑区域
+        if (this.croppingElement.clipArea) {
+          ClipTool({
+            croppingElement: $croppingElement
+          })
+        }
       }
-
     }
     // .onAreaChange((oldValue, newValue)：这个作用是获取图片大小(oldValue：表示是旧值大小, newValue：表示是新值大小)
     .onAreaChange((oldValue, newValue) => {
@@ -51,7 +57,7 @@ struct Index {
       this.croppingElement = new CroppingElement({
         size: size
       })
-      console.log(JSON.stringify(this.croppingElement))
+      // console.log(JSON.stringify(this.croppingElement))
 
     })
     .width('100%')

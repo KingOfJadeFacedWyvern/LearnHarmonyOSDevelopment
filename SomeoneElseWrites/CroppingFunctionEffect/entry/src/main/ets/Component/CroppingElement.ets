@@ -16,16 +16,7 @@ export class CroppingElement {
     size: Size_wh,
     componentSize: Size_wh,
     position: Position_xy
-  } // = {
-  //   size: {
-  //     width: 200,
-  //     height: 55
-  //   },
-  //   position: {
-  //     x: 0,
-  //     y: 0
-  //   }
-  // }
+  }
   //   裁剪区域
   clipArea: {
     size: Size_wh
@@ -56,6 +47,22 @@ export class CroppingElement {
       position: {
         x: this.size.width / 2 - params.componentWidth / 2,
         y: this.size.height / 2 - params.componentHeight / 2
+      }
+    }
+  }
+  // 首先获取图片信息
+  initClipArea() {
+    // 剪辑区域对着图片的组件大小
+    let size: Size_wh = {
+      width: this.imageInfo.componentSize.width * 0.8,
+      height: this.imageInfo.componentSize.height * 0.8
+    }
+    // 获取剪辑区域的大小
+    this.clipArea = {
+      size: size,
+      position: {
+        x: this.size.width / 2 - size.width / 2,
+        y: this.size.height / 2 - size.height / 2
       }
     }
   }
