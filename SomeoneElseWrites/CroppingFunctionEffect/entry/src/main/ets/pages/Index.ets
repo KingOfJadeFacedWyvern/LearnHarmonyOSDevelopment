@@ -1,17 +1,31 @@
 import { CroppingElement, lengthToNumber, Size_wh } from '../Component/CroppingElement'
 import ClipTool from '../Components/ClipTool'
-
+// AppStorage是应用级 ↓
 AppStorage.SetOrCreate<CroppingElement>('croppingElement', new CroppingElement({
   size: {
     width: 0,
     height: 0
   }
 }))
-
+// AppStorage是应用级 ↑
+// LocalStorage是页面级UI状态存储真 ↓
+// let storage = new LocalStorage({
+//   'croppingElement': new CroppingElement({
+//     size: {
+//       width: 0,
+//       height: 0
+//     } })
+// })
+// LocalStorage是页面级UI状态存储真 ↑
 @Entry
 @Component
 struct Index {
+  // LocalStorage是页面级UI状态存储真 ↓
+  // @LocalStorageLink('croppingElement') croppingElement: CroppingElement | null = null
+  // LocalStorage是页面级UI状态存储真 ↑
+  // AppStorage是应用级 ↓
   @StorageLink('croppingElement') croppingElement: CroppingElement | null = null
+  // AppStorage是应用级 ↑
   // croppingElement: CroppingElement
   // @State croppingElement: CroppingElement | null = null
 
