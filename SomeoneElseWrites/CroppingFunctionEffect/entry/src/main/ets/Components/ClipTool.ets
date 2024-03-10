@@ -1,5 +1,6 @@
 // ClipTool.ets主要作用触摸交互，还有组件传参之间状态管理
 import { CroppingElement, Position_xy } from '../Component/CroppingElement'
+import colorSpaceManager from '@ohos.graphics.colorSpaceManager'
 
 @Component
 struct ClipTool {
@@ -16,7 +17,7 @@ struct ClipTool {
     Stack() {
 
     }
-    .border({ width: 1, color: '00FFFF' })
+    .border({ width: 1, color: Color.Pink })
     .width(this.croppingElement.clipArea.size.width)
     .height(this.croppingElement.clipArea.size.height)
     .position({
