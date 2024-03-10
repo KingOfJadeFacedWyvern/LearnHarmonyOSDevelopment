@@ -1,12 +1,19 @@
 import { CroppingElement, lengthToNumber, Size_wh } from '../Component/CroppingElement'
 import ClipTool from '../Components/ClipTool'
 
+AppStorage.SetOrCreate<CroppingElement>('croppingElement', new CroppingElement({
+  size: {
+    width: 0,
+    height: 0
+  }
+}))
 
 @Entry
 @Component
 struct Index {
+  @StorageLink('croppingElement') croppingElement: CroppingElement | null = null
   // croppingElement: CroppingElement
-  @State croppingElement: CroppingElement | null = null
+  // @State croppingElement: CroppingElement | null = null
 
   build() {
     Stack() {

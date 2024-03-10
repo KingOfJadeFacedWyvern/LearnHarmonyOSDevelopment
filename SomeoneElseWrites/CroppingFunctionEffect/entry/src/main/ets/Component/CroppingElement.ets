@@ -16,11 +16,30 @@ export class CroppingElement {
     size: Size_wh,
     componentSize: Size_wh,
     position: Position_xy
+  } = {
+    size: {
+      width: 0,
+      height: 0
+    }, componentSize: {
+      width: 0,
+      height: 0
+    }, position: {
+      x: 0,
+      y: 0
+    }
   }
   //   裁剪区域
   clipArea: {
     size: Size_wh
     position: Position_xy
+  } = {
+    size: {
+      width: 0,
+      height: 0
+    }, position: {
+      x: 0,
+      y: 0
+    }
   }
   // 类初始化
   constructor(options: { size: Size_wh }) { //当用户打开裁剪图片工具，用户并不知道要裁剪哪一区域跟裁剪多大。要把传进来图片大小
